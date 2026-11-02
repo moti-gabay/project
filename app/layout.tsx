@@ -29,7 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <nav className="flex gap-4 border-b p-4">
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
-          {/* <Link href="/posts">פוסטים</Link> */}
+          <Link href="/classic">Form</Link>
           {/* <Link href="/guestbook">ספר אורחים</Link> */}
         </nav>
         
