@@ -8,15 +8,12 @@ type FiledPropsType = {
     error?: string;
 }
 
-function Filed({ error, label, name, style, type = "text" }: FiledPropsType) {
-    console.log("error from Filed component ",error);
-
+function Filed({ error, label, name, style, type = "text", ...inputProps }: FiledPropsType) {
 
     return (
         <div>
-
             <label htmlFor={name}>{label}</label>
-            <input className={style} type={type} name={name} />
+            <input {...inputProps} className={style} type={type} name={name} />
             {error && <p className='text-red-500'>{error}</p>}
         </div>
     )

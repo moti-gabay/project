@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { logout } from "@/lib/auth";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,6 +20,14 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  async function OnLogout() {
+    try {
+      await logout()
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <html
       lang="en"
@@ -30,9 +39,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
           <Link href="/classic">Form</Link>
-          {/* <Link href="/guestbook">ספר אורחים</Link> */}
+          <button  className="ml-[50%]"> Logout</button>
         </nav>
-        
+
         {children}
       </body>
     </html>
