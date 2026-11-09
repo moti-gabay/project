@@ -6,7 +6,7 @@ export default function Formpage() {
     return (
         <div className='w-100 p-8 m-8 mx-auto'>
 
-        <LoginForm />
+        <Form />
         </div>
     )
 }
