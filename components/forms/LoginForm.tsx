@@ -35,7 +35,7 @@ function LoginForm() {
     }
 
     return (
-        <div>
+        <div >
             <h2 className="">Login</h2>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <Filed {...register('email')} label="Email" name="email" style="w-full rounded-lg border px-3 py-2" />

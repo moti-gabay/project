@@ -21,7 +21,7 @@ function Form() {
 
     }
     return (
-        <div className='mx-auto max-w-sm space-y-4 m-8 p-8  border border-black rounded-lg'>
+        <div className='mx-auto max-w-sm space-y-4 m-8 p-8   rounded-lg'>
             <h1 className='mx-auto'>Login</h1>
             <form className='space-y-3' onSubmit={handleSubmit(onSubmit)}>
 
