@@ -1,4 +1,3 @@
-import { RegisterValues } from "./types";
 
 
 export class ApiError extends Error {
