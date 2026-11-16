@@ -1,15 +1,11 @@
 'use client'
 
-import { logInValidate } from "@/lib/validation"
 import Filed from "./Filed"
-import { error } from "console"
-import { useReducer, useState } from "react"
-import { UserLoginType } from "@/types/types"
 import Link from "next/link";
 
 
 import { useForm } from "react-hook-form";
-import { LoginValues } from "@/lib/types"
+import { LoginValues } from "@/types/types"
 import { login } from "@/lib/auth"
 import { useRouter } from 'next/navigation'
 import SubmitButton from "./SubmitButton"
@@ -36,7 +32,7 @@ function LoginForm() {
 
     return (
         <div>
-            <h2 className="">Login</h2>
+            <h2 className="mx-auto w-[20%] font-bold">Login</h2>
             <form onSubmit={handleSubmit(onSubmit)} >
                 <Filed {...register('email')} label="Email" name="email" style="w-full rounded-lg border px-3 py-2" />
                 <Filed type="password" {...register('password')} label="Password" name="password" style="w-full rounded-lg border px-3 py-2" />
