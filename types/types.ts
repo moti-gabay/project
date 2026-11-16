@@ -14,3 +14,5 @@ export type Task = {
     done: boolean;
     userId: string
 }
+
+export type NewTask = Pick<Task, "title">;

@@ -2,37 +2,23 @@
 
 import { getTasks } from '@/lib/task';
 import { Task } from '@/types/types';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import TaskItem from './TaskI';
 
 function TasksList() {
     const [tasks, setTasks] = useState<Task[]>([])
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [errors, setErrors] = useState("");
 
-    const fetchTasks = async () => {
-        try {
-            setLoading(true);
-            await getTasks().then((res) => {
-                setTasks(res)
-                setLoading(false)
-            }).catch(err => {
-                setLoading(false)
-                console.log(err);
-
-                setErrors(err)
-            });
-
-
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     useEffect(() => {
-
-        fetchTasks()
-
+        let ignore = false;
+        getTasks()
+            .then(res => { if (!ignore) setTasks(res) })
+            .catch((err: unknown) => {
+                if (!ignore) setErrors(err instanceof Error ? err.message : "Failed to load tasks")
+            })
+            .finally(() => { if (!ignore) setLoading(false) });
+        return () => { ignore = true };
     }, [])
 
     if (loading) {
@@ -54,13 +40,7 @@ function TasksList() {
             </h1>
 
             <ul>
-                {tasks && tasks.map((t: Task) => {
-                    return (
-                        <div key={t._id}>
-                            <TaskItem task={t} />
-                        </div>
-                    )
-                })}
+                {tasks.map(t => <TaskItem key={t._id} task={t} />)}
             </ul>
         </div>
     )
