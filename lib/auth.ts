@@ -1,6 +1,5 @@
-import { User } from "../types/types";
+import { LoginValues, RegisterValues, User } from "@/types/types";
 import { api } from "./api";
-import { LoginValues, RegisterValues } from "./types";
 
 
 
