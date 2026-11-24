@@ -23,7 +23,7 @@ function LoginForm() {
 
             console.log(res);
 
-            router.push('/welcome')
+            router.push('/tasks')
         } catch (error) {
             console.log(error);
 

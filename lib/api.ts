@@ -20,9 +20,9 @@ const API_URL = "http://localhost:3001"
 export async function api<T>(path: string, options: RequestInit = {}): Promise<T> {
     let res: Response;
     try {
-        res = await fetch(`${API_URL}/api${path}`, {
+        res = await fetch(`/api${path}`, {
             ...options,
-            credentials: "include",
+            // credentials: "include",
             headers: { 'Content-Type': "application/json", ...options.headers }
         });
     } catch (error) {

@@ -1,20 +1,13 @@
-"use client"
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { logout } from "@/lib/auth";
+import LogoutButton from "@/components/forms/LogoutButton";
 
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  async function OnLogout() {
-    try {
-      await logout()
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+  
   return (
     <html
       lang="en"
@@ -27,7 +20,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Link href="/about">About</Link>
           <Link href="/tasks">Tasks</Link>
           <Link href="/addTask">Add Task</Link>
-          <button onClick={OnLogout} className="ml-[50%]"> Logout</button>
+          <LogoutButton></LogoutButton>
         </nav>
 
         {children}
